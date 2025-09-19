@@ -1,0 +1,262 @@
+/* Example Styles for Secure Document Server */
+/* This is a placeholder CSS file for the public repository */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: #00ff00;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Terminal Theme */
+.terminal {
+    background: #000;
+    color: #00ff00;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #00ff00;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.terminal-header {
+    color: #ff00ff;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+.prompt {
+    color: #ffff00;
+}
+
+.highlight {
+    color: #00ffff;
+    font-weight: 600;
+}
+
+.error {
+    color: #ff0000;
+    font-weight: 600;
+}
+
+.success {
+    color: #00ff00;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #00ff00, #00ffff);
+    color: #000;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00ffff;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    color: #00ff00;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Card Layout */
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 255, 0, 0.2);
+}
+
+.card-header {
+    color: #ff00ff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ff00ff;
+    padding-bottom: 5px;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Status Indicators */
+.status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.status-online {
+    background: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+    border: 1px solid #00ff00;
+}
+
+.status-offline {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+.status-pending {
+    background: rgba(255, 255, 0, 0.2);
+    color: #ffff00;
+    border: 1px solid #ffff00;
+}
+
+/* Animations */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes matrix {
+    0% { transform: translateY(-100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.matrix-effect {
+    animation: matrix 0.5s ease-in;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .terminal {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+/* Example: Access Code Input */
+.access-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.access-form h2 {
+    color: #ff00ff;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 4px solid rgba(0, 255, 0, 0.3);
+    border-top: 4px solid #00ff00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

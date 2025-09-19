@@ -9,7 +9,6 @@ A code-gated document server built with Rust and Axum that serves secure documen
 - **🛡️ Secure by design**: Alpine Linux container with minimal attack surface
 - **📦 Lightweight**: ~27MB container size with Alpine Linux
 - **⚙️ Easy deployment**: Automated builds with Makefile and Docker
-- **🌐 Modern web interface**: Cyberpunk terminal-themed UI
 
 ## Use Cases
 

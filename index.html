@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Document - Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/icons/favicon.png" sizes="192x192" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #00ff00;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+
+        h1 {
+            color: #ff00ff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+
+        h2 {
+            color: #00ffff;
+            margin: 30px 0 15px 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #00ffff;
+            padding-bottom: 5px;
+        }
+
+        .header-info {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 3px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .highlight {
+            color: #ffff00;
+            font-weight: 600;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 0, 255, 0.1);
+            border: 2px solid #ff00ff;
+            border-radius: 8px;
+        }
+
+        .download-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(255, 0, 255, 0.7);
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .terminal-prompt {
+            color: #ffff00;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>>>> SECURE DOCUMENT ACCESS <<<</h1>
+
+        <div class="header-info">
+            <p><span class="terminal-prompt">$</span> <span class="highlight">Example Document Server</span></p>
+            <p>Demonstration of code-gated access control</p>
+            <p>Built with Rust, Axum, and Alpine Linux</p>
+        </div>
+
+        <div class="section">
+            <h2>About This Project</h2>
+            <p>This is a demonstration of a secure document server that requires valid access codes to view content. The application is built with modern web technologies and focuses on security and performance.</p>
+
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <strong>Backend</strong><br>
+                    Rust + Axum
+                </div>
+                <div class="tech-item">
+                    <strong>Container</strong><br>
+                    Alpine Linux
+                </div>
+                <div class="tech-item">
+                    <strong>Deployment</strong><br>
+                    AWS ECR + Graviton
+                </div>
+                <div class="tech-item">
+                    <strong>Security</strong><br>
+                    Code-gated Access
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Features</h2>
+            <ul>
+                <li><span class="highlight">Secure Access Control:</span> Documents only accessible with valid codes</li>
+                <li><span class="highlight">Rust Performance:</span> Fast, memory-safe backend</li>
+                <li><span class="highlight">Alpine Security:</span> Minimal attack surface (27MB container)</li>
+                <li><span class="highlight">Modern Deployment:</span> Automated CI/CD with Makefile</li>
+                <li><span class="highlight">Environment Configuration:</span> Easy setup with .env files</li>
+                <li><span class="highlight">Health Monitoring:</span> Built-in health check endpoints</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Example Implementation</h2>
+            <p>This server can be configured to serve any type of secure document:</p>
+            <ul>
+                <li>Personal portfolios and resumes</li>
+                <li>Confidential reports</li>
+                <li>Private documentation</li>
+                <li>Gated content delivery</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Technical Architecture</h2>
+            <p>The application uses a multi-stage Alpine Docker build for optimal security and size. Environment-based configuration allows for flexible deployment across different environments.</p>
+
+            <p><span class="highlight">Security Benefits:</span></p>
+            <ul>
+                <li>Alpine Linux base</li>
+                <li>Static binary compilation</li>
+                <li>Non-root container execution</li>
+                <li>Minimal attack surface</li>
+            </ul>
+        </div>
+
+        <div class="download-section">
+            <h2>Example Document</h2>
+            <p>In a real implementation, this would be your secure document.</p>
+            <a href="javascript:void(0);" class="download-button" onclick="initiateDownload()">
+                📄 Download Example PDF
+            </a>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                <span class="highlight">Note:</span> Replace with your actual document in production
+            </p>
+        </div>
+    </div>
+    <script type="application/javascript" src="/assets/main.js"></script>
+</body>
+</html>
