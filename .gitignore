@@ -23,6 +23,10 @@ Cargo.lock
 # Node modules (if using frontend)
 node_modules/
 
+# Admin frontend build artifacts
+assets/admin/
+admin-frontend/dist/
+
 # Coverage
 coverage/
 *.profraw
@@ -30,4 +34,17 @@ coverage/
 # Misc
 *.tmp
 *.bak
+*.pdf
 .env
+
+# Database
+backups/
+*.sql
+*.dump
+
+# Docker
+docker-compose.override.yml
+
+admin-assets/assets/
+
+admin-assets/

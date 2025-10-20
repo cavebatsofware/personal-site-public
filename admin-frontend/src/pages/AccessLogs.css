@@ -1,0 +1,244 @@
+.access-logs-page {
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.btn-danger {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.logs-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    color: #666;
+}
+
+.logs-table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.logs-table thead {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.logs-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    white-space: nowrap;
+}
+
+.logs-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.logs-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.logs-table tbody tr.failed {
+    background-color: #fff5f5;
+}
+
+.logs-table tbody tr.failed:hover {
+    background-color: #ffe0e0;
+}
+
+.logs-table code {
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-method {
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.badge-get {
+    background-color: #3498db;
+    color: white;
+}
+
+.badge-post {
+    background-color: #27ae60;
+    color: white;
+}
+
+.badge-put {
+    background-color: #f39c12;
+    color: white;
+}
+
+.badge-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.badge-patch {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.badge-success {
+    background-color: #27ae60;
+    color: white;
+}
+
+.badge-failed {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.error {
+    background-color: #fff5f5;
+    border: 1px solid #e74c3c;
+    color: #c0392b;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.pagination-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    padding: 0 15px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .logs-table-container {
+        overflow-x: scroll;
+    }
+
+    .logs-table {
+        min-width: 800px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .pagination-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

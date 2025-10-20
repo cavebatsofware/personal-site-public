@@ -1,5 +1,23 @@
-# Build stage
-FROM rust:1.89-alpine3.20 AS builder
+# Frontend build stage
+FROM node:22-alpine AS frontend-builder
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy vite config and frontend source
+COPY vite.config.js ./
+COPY admin-frontend ./admin-frontend
+
+# Build frontend (requires SITE_DOMAIN to be set)
+ARG SITE_DOMAIN=example.com
+ENV SITE_DOMAIN=${SITE_DOMAIN}
+RUN npm run build
+
+# Rust build stage
+FROM rust:alpine3.22 AS builder
 
 WORKDIR /app
 
@@ -21,7 +39,7 @@ ENV OPENSSL_STATIC=1
 RUN cargo build --release
 
 # Runtime stage
-FROM alpine:3.20
+FROM alpine:3.22.1
 
 WORKDIR /app
 
@@ -33,26 +51,22 @@ RUN apk add --no-cache \
 # Copy the binary from builder stage
 COPY --from=builder /app/target/release/personal-site ./personal-site
 
-# Build arguments for configurable asset paths
-ARG HTML_SRC_DIR="."
-ARG PDF_SRC_DIR="."
-ARG ASSETS_SRC_DIR="assets"
+# Copy built frontend from frontend-builder stage
+COPY --from=frontend-builder /app/admin-assets ./admin-assets
 
-# Copy static assets - paths can be overridden during build
-# Example: docker build --build-arg HTML_SRC_DIR="custom" .
-# It is recommended to use a different repository and copy them over during deployment
-# so that repo can remain private and this one can be shared publicly.
-COPY ${HTML_SRC_DIR}/index.html ${HTML_SRC_DIR}/landing.html ./
-COPY ${PDF_SRC_DIR}/*.pdf ./
-COPY ${ASSETS_SRC_DIR} ./assets
+# Copy static assets
+COPY assets ./assets
+COPY landing.html ./landing.html
+COPY entrypoint.sh ./entrypoint.sh
 
 # Create non-root user (Alpine style)
 RUN adduser -D -s /bin/false appuser && \
-    chown -R appuser:appuser /app
+    chown -R appuser:appuser /app && \
+    chmod +x ./entrypoint.sh
 
 USER appuser
 
 EXPOSE 3000
 
 # Start the application
-CMD ["./personal-site"]
+ENTRYPOINT ["./entrypoint.sh"]
