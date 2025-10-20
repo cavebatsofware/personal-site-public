@@ -9,10 +9,9 @@ A guarded personal site built with Rust and Axum that serves a document only to 
 - **Access tracking**: Monitor and analyze who accesses your site with full visibility
 - **Security features**:
   - Rate limiting (configurable per minute/hour)
-  - DDoS protection with automatic IP blocking
   - Full access logs with IP addresses and access codes for friend tracking
 - **Static file serving**: CSS and other assets served securely
-- **Production-ready**: Connection retry logic, health checks, and migrations
+- **Deploy-ready**: Connection retry logic, health checks, and migrations
 
 ## Quick Start
 
@@ -101,8 +100,8 @@ For production, update your `.env` file with your hosted PostgreSQL database:
 DATABASE_URL=postgresql://user:password@your-db-host:5432/personal_site
 ```
 
-The application includes automatic retry logic for production resilience:
-- 5 connection attempts with exponential backoff
+The application includes automatic retry logic for deployment:
+- connection attempts with exponential backoff
 - Health checks and connection verification
 - Graceful error handling
 
@@ -134,7 +133,7 @@ For example, with a configured access code:
 ### Endpoints
 
 - `/` - Landing page
-- `/access/{code}` - Resume page (code-gated)
+- `/access/{code}` - Site page (code-gated)
 - `/access/{code}/download` - Download PDF resume
 - `/health` - Health check endpoint
 - `/assets/*` - Static assets (CSS, icons, etc.)
@@ -179,9 +178,7 @@ personal-site/
 ├── scripts/                # Utility scripts
 │   ├── init-db.sh          # Database initialization
 │   └── wait-for-db.sh      # Database readiness check
-├── index.html              # Resume HTML
 ├── landing.html            # Landing page
-├── Resume.pdf              # PDF resume
 ├── assets/                 # Static assets (CSS, icons, etc.)
 └── README.md               # This file
 ```
@@ -291,18 +288,17 @@ PORT=3000
 #### Docker Build Details
 
 The Dockerfile uses an optimized Alpine Linux multi-stage build:
-- **Build stage**: Uses `rust:1.89-alpine3.20` with musl for static compilation
-- **Runtime stage**: Uses `alpine:3.20` for minimal production image (~27MB)
+- **Build stage**: Uses `rust:1.89-alpine3.x` with musl for static compilation
+- **Runtime stage**: Uses `alpine:3.x` for minimal production image (~27MB)
 - **Security**:
-  - Alpine Linux with 0 CVEs vs Debian's 225+ vulnerabilities
+  - Alpine Linux
   - Runs as non-root user `appuser`
   - Static OpenSSL linking for enhanced security
-- **Performance**: 73% smaller than previous Debian-based images
 - **Port**: Exposes port 3000
 
 ## Customization
 
-- **Resume content**: Edit `index.html` to update resume information
+- **Resume content**: Edit `index.html` to update site information - uses s3 location, see source code for details
 - **Styling**: Modify `styles.css` to change the appearance
 - **Access codes**: Update the `ACCESS_CODES` environment variable
 - **Server configuration**: Modify `src/main.rs` for additional features
